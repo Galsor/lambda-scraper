@@ -1,0 +1,6 @@
+defaults:
+  - driver: chrome
+  - _self_
+
+mode:
+  debug: True

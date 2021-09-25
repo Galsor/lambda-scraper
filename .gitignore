@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#Hydra
+/outputs
+
+#Selenium
+/selenium-drivers
