@@ -1,1 +1,1 @@
-docker build -t lambda-scraper - < Dockerfile
+docker build . -t lambda-scraper:develop
