@@ -1,11 +1,13 @@
 import logging
 from abc import ABC
-from typing import Dict, List, Optional, Type
 from dataclasses import dataclass
+from typing import Dict, List, Optional, Type
+
 from hydra.core.singleton import Singleton
 from omegaconf import DictConfig
 
 logger = logging.getLogger(__name__)
+
 
 @dataclass
 class Plugin(ABC):
@@ -52,9 +54,10 @@ class Plugins(metaclass=Singleton):
     def load_all_plugins(self, discovered_plugins: List[Plugin]) -> None:
         for plugin in discovered_plugins:
             self.name_to_plugin[plugin.name] = plugin
-    
-    def reset(self, reinitialize=True, only_active=True, plugin_type: Optional[Plugin]=None):
-        self.name_to_plugin: Dict[str, Type[Plugin]]= {}
+
+    def reset(
+        self, reinitialize=True, only_active=True, plugin_type: Optional[Plugin] = None
+    ):
+        self.name_to_plugin: Dict[str, Type[Plugin]] = {}
         if reinitialize:
             self._initialize(only_active, plugin_type)
-
