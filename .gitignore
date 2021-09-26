@@ -132,4 +132,4 @@ dmypy.json
 /outputs
 
 #Selenium
-/selenium-drivers
+/selenium_drivers
