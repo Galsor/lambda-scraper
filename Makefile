@@ -12,9 +12,11 @@ requirements:
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
+## Run unittests
 test: requirements
-	$(PYTHON_INTERPRETER) -m unittest discover
+	$(PYTHON_INTERPRETER) -m pytest
 
+## Run the app locally
 local_run: requirements
 	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE)
 
@@ -23,6 +25,7 @@ clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
+## Sort imports with isort & import code with Black
 fix_code: clean
 	@echo "#################################################################################"
 	@echo "# isort                                                                         #"
@@ -33,6 +36,7 @@ fix_code: clean
 	@echo "#################################################################################"
 	$(PYTHON_INTERPRETER) -m black $(SRC_DIR)
 
+## Update requirements and push commited changes
 push_develop: fix_code
 ifeq (,$(shell git diff --cached --exit-code))
 	$(PYTHON_INTERPRETER) -m pip freeze > requirements.txt
