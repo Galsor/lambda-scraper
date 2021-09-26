@@ -1,6 +1,6 @@
 from queue import SimpleQueue
 
-from .abstract_queue import LambdaScraperQueue
+from .queue import LambdaScraperQueue
 
 
 class MinimalQueue(SimpleQueue, LambdaScraperQueue):
