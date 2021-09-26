@@ -1,3 +1,2 @@
 debug: True
 logging_level: DEBUG
-outputs_dir: ../outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}

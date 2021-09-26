@@ -1,6 +1,6 @@
 defaults:
   - driver: chrome
-  - app_mode: url-parser
+  - app_mode: url_parser
   - running_mode: debug
   - _self_
 
