@@ -35,6 +35,7 @@ clean:
 
 ## Sort imports with isort & import code with Black
 fix_code: clean
+ifeq (,$(shell git diff --cached --exit-code))
 	@echo "#################################################################################"
 	@echo "# isort                                                                         #"
 	@echo "#################################################################################"
@@ -43,6 +44,12 @@ fix_code: clean
 	@echo "# Black                                                                         #"
 	@echo "#################################################################################"
 	$(PYTHON_INTERPRETER) -m black $(SRC_DIR)
+	git add *
+	git commit -m "black & isort clean"
+else
+	@echo "Files are stagged and ready to be commited. Commit them before updating requirements"
+	exit 1
+endif
 
 ## Update requirements and push commited changes
 push_develop: fix_code
