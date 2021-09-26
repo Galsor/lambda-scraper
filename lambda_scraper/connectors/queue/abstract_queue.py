@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class Queue(ABC):
+class LambdaScraperQueue(ABC):
     @abstractmethod
     def put(self, message):
         ...
@@ -12,7 +12,7 @@ class Queue(ABC):
 
     @property
     @abstractmethod
-    def empty(self) -> bool:
+    def is_empty(self) -> bool:
         ...
 
     @abstractmethod

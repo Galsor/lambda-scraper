@@ -1,15 +1,14 @@
 from queue import SimpleQueue
 
-from .queue import Queue
+from .abstract_queue import LambdaScraperQueue
 
 
-class MinimalQueue(Queue, SimpleQueue):
-    def __init__(self):
-        super().init()
+class MinimalQueue(SimpleQueue, LambdaScraperQueue):
+    """Minimal Queue for testing"""
 
     @property
-    def empty(self) -> bool:
-        return super().empty()
+    def is_empty(self) -> bool:
+        return self.empty()
 
     def __len__(self) -> int:
-        return super().qsize()
+        return self.qsize()
