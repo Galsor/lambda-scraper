@@ -12,13 +12,21 @@ requirements:
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
-## Run unittests
-test: requirements
-	$(PYTHON_INTERPRETER) -m pytest
+## Run the scraper executor locally
+scraper_local_run: requirements
+	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE) "app_mode=scraper"
 
-## Run the app locally
-local_run: requirements
-	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE)
+## Run the url parser executor locally
+url_parser_local_run: requirements
+	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE) "app_mode=url_parser"
+
+## Run the file maker executor locally
+file_maker_local_run: requirements
+	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE) "app_mode=file_maker"
+
+## Run unit tests
+unit_test:
+	$(PYTHON_INTERPRETER) -m pytest
 
 ## Delete all compiled Python files
 clean:

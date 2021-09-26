@@ -1,13 +1,12 @@
-from unittest import TestCase
+import pytest
 from lambda_scraper.drivers.selenium_chrome import ChromeDriver
-from test.unit.mock_config import MockConfig
+from test.unit.mock_config import mock_config_scraper
 
-class TestChromeDriver(TestCase):
-    def setUp(self):
-        self.mock_cfg = MockConfig()
-        print(self.mock_cfg)
-        self.driver = ChromeDriver(self.mock_cfg)
+@pytest.fixture(scope="module")
+def driver(mock_config = mock_config_scraper()):
+    driver = ChromeDriver(mock_config)
+    return driver
     
-    def test_get(self):
-        self.driver.get("https://www.python.org/")
-        assert "Python" in self.driver.title
+def test_get(driver):
+    driver.get("https://www.python.org/")
+    assert "Python" in driver.title
