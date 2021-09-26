@@ -1,6 +1,10 @@
 defaults:
   - driver: chrome
+  - app_mode: url-parser
+  - running_mode: debug
   - _self_
 
-mode:
-  debug: True
+hydra:
+  job_logging:
+    root:
+      level: ${running_mode.logging_level}
