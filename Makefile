@@ -23,9 +23,7 @@ clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
-## Lint using flake8
-lint:
-	
+fix_code: clean
 	@echo "#################################################################################"
 	@echo "# isort                                                                         #"
 	@echo "#################################################################################"
@@ -34,6 +32,20 @@ lint:
 	@echo "# Black                                                                         #"
 	@echo "#################################################################################"
 	$(PYTHON_INTERPRETER) -m black $(SRC_DIR)
+
+push_develop: fix_code
+ifeq (,$(shell git diff --cached --exit-code))
+	$(PYTHON_INTERPRETER) -m pip freeze > requirements.txt
+	git add requirements.txt
+	git commit -m "update requirements"
+	git push origin develop
+else
+	@echo "Files are stagged and ready to be commited. Commit them before updating requirements"
+	exit 1
+endif
+
+## Lint using flake8 & mypy
+lint:
 	@echo "#################################################################################"
 	@echo "# Mypy                                                                          #"
 	@echo "#################################################################################"
