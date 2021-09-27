@@ -1,3 +1,5 @@
+.PHONY: make_env requirements scraper_local_run file_maker_local_run unit_test clean fix_code push_develop lint
+
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PROFILE = default
 PROJECT_NAME = lambda-scraper
@@ -6,9 +8,12 @@ PYTHON_INTERPRETER = $(PROJECT_DIR)/$(VENV_NAME)/bin/python3
 SRC_DIR = lambda_scraper
 ENTRYPOINT_FILE = $(SRC_DIR)/app.py
 
+## Create virtual environment
+make_env:
+	$(shell if [ ! -d ".venv" ]; then $(PYTHON_INTERPRETER) -m venv $(VENV_NAME); fi)
 
 ## Install Python Dependencies
-requirements:
+requirements: make_env
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
@@ -36,13 +41,9 @@ clean:
 ## Sort imports with isort & import code with Black
 fix_code: clean
 ifeq (,$(shell git diff --cached --exit-code))
-	@echo "#################################################################################"
-	@echo "# isort                                                                         #"
-	@echo "#################################################################################"
+	@echo "----- Isort -----"
 	$(PYTHON_INTERPRETER) -m isort $(SRC_DIR)
-	@echo "#################################################################################"
-	@echo "# Black                                                                         #"
-	@echo "#################################################################################"
+	@echo "----- Black -----"
 	$(PYTHON_INTERPRETER) -m black $(SRC_DIR)
 	git add *
 	git commit -m "black & isort clean"
@@ -65,13 +66,9 @@ endif
 
 ## Lint using flake8 & mypy
 lint:
-	@echo "#################################################################################"
-	@echo "# Mypy                                                                          #"
-	@echo "#################################################################################"
+	@echo "----- Mypy -----"
 	$(PYTHON_INTERPRETER) -m mypy $(SRC_DIR)
-	@echo "#################################################################################"
-	@echo "# flake8                                                                        #"
-	@echo "#################################################################################"
+	@echo "----- flake8 -----"
 	$(PYTHON_INTERPRETER) -m flake8 $(SRC_DIR)
 
 
