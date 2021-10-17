@@ -1,13 +1,23 @@
 from enum import Enum, auto
-
+from abc import ABC
 from lambda_scraper.recipe import PLUGINS
 
 
-# TODO: sync enum value with names from the configs
-# or use dep_config store and dataclass
-class ExecutorMode(str, Enum):
-    PRODUCER = auto()
-    SCRAPER = auto()
+class Executor(ABC):
+    pass
 
 
-TaskType = Enum("Task", zip(PLUGINS, PLUGINS)) #Auto enum with plugins names
+class Producer(Executor):
+    pass
+
+
+class Scraper(Executor):
+    pass
+
+
+ExecutorMode = {
+    "PRODUCER": Producer(),
+    "SCRAPER": Scraper()
+}
+
+TaskType = Enum("Task", zip(PLUGINS, PLUGINS))  # Auto enum with plugins names

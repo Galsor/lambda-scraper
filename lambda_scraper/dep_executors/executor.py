@@ -3,20 +3,14 @@ from abc import ABC, abstractmethod
 from hydra.core.singleton import Singleton
 from omegaconf import DictConfig
 
-from ..utils.types import ExecutorMode
-from .plugins import Plugins
+from lambda_scraper.utils.types import ExecutorMode
 
 
-class Executor(ABC, metaclass=Singleton):
+class BaseExecutor(ABC, metaclass=Singleton):
     mode: ExecutorMode
-    plugins: Plugins
     config: DictConfig
 
     @abstractmethod
-    def load_plugins(self) -> None:
-        """Abstract method in charge of loading scraping plugins"""
-        ...
-
     def run(self) -> None:
         """Run the dep_recipes loaded"""
         ...
