@@ -50,7 +50,7 @@ class Factory(object):
             del self._cls[name]
             del self._doc[name]
 
-    def register(self, doc=None):
+    def register(self, doc=None, *args, **kwargs):
         def fn(cls):
             self._cls[cls.__name__] = cls
             self._doc[cls.__name__] = doc

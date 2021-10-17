@@ -46,7 +46,7 @@ def test_doc(testClass_factory, test_class_name, test_class_doc):
     assert test_class_name.doc(testClass_factory) == test_class_doc
 
 
-def test_call(testClass_factory, test_class_name)
+def test_call(testClass_factory, test_class_name):
     test_message = "test message"
     class_instance = testClass_factory(test_class_name, test_message)
     assert class_instance.message == test_message

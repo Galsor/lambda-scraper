@@ -20,10 +20,10 @@ def load_config(app_mode):
 
 def mock_config():
     logger.warning("You are using default config. This dep_config is based on Scraper app_mode")
-    return load_config(ExecutorMode.SCRAPER)
+    return load_config("SCRAPER")
 
 def mock_config_scraper():
-    return load_config(ExecutorMode.SCRAPER)
+    return load_config("SCRAPER")
 
 def mock_config_producer():
-    return load_config(ExecutorMode.PRODUCER)
+    return load_config("PRODUCER")
