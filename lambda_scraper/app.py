@@ -6,7 +6,7 @@ from omegaconf import DictConfig, OmegaConf
 logger = logging.getLogger(__name__)
 
 
-@hydra.main(config_path="../config", config_name="config")
+@hydra.main(config_path="../dep_config", config_name="dep_config")
 def run_app(cfg: DictConfig):
     logger.debug("Debug is printed")
     logger.info(OmegaConf.to_yaml(cfg))

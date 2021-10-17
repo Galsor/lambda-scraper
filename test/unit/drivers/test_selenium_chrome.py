@@ -1,5 +1,5 @@
 import pytest
-from lambda_scraper.drivers.selenium_chrome import ChromeDriver
+from lambda_scraper.dep_drivers.selenium_chrome import ChromeDriver
 from test.unit.mock_config import mock_config_scraper
 
 @pytest.fixture(scope="module")

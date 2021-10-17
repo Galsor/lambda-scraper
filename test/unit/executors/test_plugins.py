@@ -1,5 +1,5 @@
 import pytest
-from lambda_scraper.executors.plugins import Plugins, Plugin
+from lambda_scraper.dep_executors.plugins import Plugins, Plugin
 from ..mock_config import mock_config_url_parser
 
 
