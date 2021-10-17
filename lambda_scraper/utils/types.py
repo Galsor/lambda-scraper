@@ -1,9 +1,8 @@
-from enum import Enum
+from enum import Enum, auto
 
 
 # TODO: sync enum value with names from the configs
-# or use config store and dataclass
+# or use dep_config store and dataclass
 class ExecutorMode(str, Enum):
-    URL_PARSER = "url_parser"
-    SCRAPER = "scraper"
-    FILE_MAKER = "file_maker"
+    PRODUCER = auto()
+    SCRAPER = auto()

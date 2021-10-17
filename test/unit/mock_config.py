@@ -19,14 +19,11 @@ def load_config(app_mode):
 
 
 def mock_config():
-    logger.warning("You are using default config. This config is based on Scraper app_mode")
+    logger.warning("You are using default config. This dep_config is based on Scraper app_mode")
     return load_config(ExecutorMode.SCRAPER)
 
 def mock_config_scraper():
     return load_config(ExecutorMode.SCRAPER)
 
-def mock_config_url_parser():
-    return load_config(ExecutorMode.URL_PARSER)
-
-def mock_config_file_maker():
-    return load_config(ExecutorMode.FILE_MAKER)
+def mock_config_producer():
+    return load_config(ExecutorMode.PRODUCER)

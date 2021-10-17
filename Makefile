@@ -23,11 +23,7 @@ scraper_local_run: requirements
 
 ## Run the url parser executor locally
 url_parser_local_run: requirements
-	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE) "app_mode=url_parser"
-
-## Run the file maker executor locally
-file_maker_local_run: requirements
-	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE) "app_mode=file_maker"
+	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE) "app_mode=producer"
 
 ## Run unit tests
 unit_test:
