@@ -1,3 +1,0 @@
-headless: True
-disable-gpu: True
-disable-extensions: True
