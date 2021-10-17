@@ -1,15 +1,11 @@
-defaults:
-  - driver: chrome
-  - running_mode: debug
+default:
   - app_mode: MISSING
-  - _self_
-
-
+  - environement: local
+  - run_mode: debug
 
 hydra:
   job_logging:
     root:
-      level: ${running_mode.logging_level}
+      level: ${run_mode.logging_level}
 
-plugins:
-  only_active: True
+
