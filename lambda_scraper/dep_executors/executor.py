@@ -18,5 +18,5 @@ class Executor(ABC, metaclass=Singleton):
         ...
 
     def run(self) -> None:
-        """Run the recipes loaded"""
+        """Run the dep_recipes loaded"""
         ...
