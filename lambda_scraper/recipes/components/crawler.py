@@ -25,7 +25,7 @@ class LinearCrawlerConfig(CrawlerConfig):
     delay: float = 1
 
 
-# TODO see how to integrate config. (Config Store ?)
+# TODO see how to integrate dep_config. (Config Store ?)
 class Crawler:
     """Takes a URL and navigate through its childs to extract related URLs"""
 

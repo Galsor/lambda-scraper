@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from dataclasses import dataclass
 
-from ..executors.plugins import Plugin
+from ..dep_executors.plugins import Plugin
 
 
 @dataclass
