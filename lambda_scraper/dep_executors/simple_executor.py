@@ -1,6 +1,6 @@
 from omegaconf import DictConfig
 
-from lambda_scraper.executors.executor import Executor
+from lambda_scraper.dep_executors.executor import Executor
 
 from .plugins import Plugins
 
