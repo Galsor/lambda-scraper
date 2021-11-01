@@ -23,3 +23,12 @@ def scrap(task_type: TaskType):
     raise NotImplementedError(
         f"Scraper function is not implemented for {type(task_type)}"
     )
+
+
+@singledispatch
+def context(task_type: TaskType):
+    """Generic method for loading the context of a tasks.
+    This methodes requires to be supercharged with @context.register to provide actions."""
+    raise NotImplementedError(
+        f"Context function is not implemented for {type(task_type)}"
+    )
