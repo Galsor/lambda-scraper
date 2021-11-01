@@ -1,9 +1,18 @@
+from abc import ABC, abstractmethod
 from enum import Enum
 
+from omegaconf import DictConfig
 
-# TODO: sync enum value with names from the configs
-# or use config store and dataclass
-class ExecutorMode(str, Enum):
-    URL_PARSER = "url_parser"
-    SCRAPER = "scraper"
-    FILE_MAKER = "file_maker"
+
+class BaseTask(ABC):
+    pass
+
+
+class BaseExecutor(ABC):
+    """Abstract class for runnable application such as Producer and Scraper"""
+
+    cfg: DictConfig
+
+    @abstractmethod
+    def run(self, cfg: DictConfig, context):
+        ...

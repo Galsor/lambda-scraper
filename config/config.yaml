@@ -1,15 +1,15 @@
 defaults:
+  - environment/local
+  - run_mode: debug
   - driver: chrome
-  - running_mode: debug
-  - app_mode: MISSING
   - _self_
 
+task: "wikipedia"
 
-
+app_mode: MISSING
 hydra:
   job_logging:
     root:
-      level: ${running_mode.logging_level}
+      level: ${run_mode.logging_level}
 
-plugins:
-  only_active: True
+
