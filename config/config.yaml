@@ -4,6 +4,8 @@ defaults:
   - driver: chrome
   - _self_
 
+task: "wikipedia"
+
 app_mode: MISSING
 hydra:
   job_logging:
