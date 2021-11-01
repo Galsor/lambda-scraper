@@ -3,15 +3,16 @@ import logging
 import hydra
 from omegaconf import DictConfig, OmegaConf
 
-from lambda_scraper.scraper.executor import Scraper
 from lambda_scraper.producer.executor import Producer
+from lambda_scraper.scraper.executor import Scraper
 
 logger = logging.getLogger(__name__)
 
 AppMode = {"PRODUCER": Producer, "SCRAPER": Scraper}
 
-def format_config(cfg:DictConfig) -> DictConfig:
-    cfg.app_mode=cfg.app_mode.upper()
+
+def format_config(cfg: DictConfig) -> DictConfig:
+    cfg.app_mode = cfg.app_mode.upper()
     return cfg
 
 
@@ -19,7 +20,7 @@ def format_config(cfg:DictConfig) -> DictConfig:
 def run_app(cfg: DictConfig):
     logger.debug("Debug is printed")
     logger.info(OmegaConf.to_yaml(cfg))
-    
+
     cfg = format_config(cfg)
 
     executor = AppMode[cfg.app_mode.upper()](cfg)

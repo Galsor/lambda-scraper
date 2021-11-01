@@ -1,7 +1,8 @@
+import logging
+from enum import Enum
 from importlib import import_module
 from pathlib import Path
-from enum import Enum
-import logging
+
 from lambda_scraper.utils.types import BaseTask
 
 logger = logging.getLogger("Initialize plugins")
