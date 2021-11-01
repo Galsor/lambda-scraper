@@ -1,30 +1,33 @@
 import json
+import logging
+from typing import Type
 
 from lambda_scraper.recipe.interface import context, produce, scrap
 from lambda_scraper.utils.paths import DATA_DIR
-from lambda_scraper.utils.types import TaskType
+from lambda_scraper.utils.types import BaseTask
+
+TYPE= type(__name__, (BaseTask,), {})
+logger = logging.getLogger(__name__)
 
 _context_filepath = DATA_DIR / "wikipedia" / "context.json"
 
-
-@produce.register
-def _(
-    task_type: TaskType,
+def _context(
+    task_type: TYPE,
 ):
-    pass
-
-
-@scrap.register
-def _(
-    task_type: TaskType,
-):
-    pass
-
-
-@context.register
-def _(
-    task_type: TaskType,
-):
-    with open(context_filepath) as f:
+    with open(_context_filepath) as f:
         context = json.load(f)
     return context
+    
+
+def _produce(
+    task_type: TYPE,
+):
+    pass
+
+
+def _scrap(
+    task_type: TYPE,
+):
+    pass
+
+
