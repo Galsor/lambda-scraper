@@ -1,2 +1,3 @@
-db: local
-queue: local
+defaults:
+  - db: local
+  - queue: local

@@ -1,6 +1,7 @@
 import logging
 from functools import singledispatch
 from typing import Dict
+import sys
 
 import hydra
 from omegaconf import DictConfig, OmegaConf
@@ -9,7 +10,6 @@ from lambda_scraper.utils.types import ExecutorMode, Scraper, Producer
 from lambda_scraper.components.queue.local import LocalQueue
 
 logger = logging.getLogger(__name__)
-
 
 @singledispatch
 def run(app_mode, cfg: DictConfig):

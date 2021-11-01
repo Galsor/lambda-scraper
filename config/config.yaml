@@ -1,6 +1,7 @@
 defaults:
-  - environment: local
+  - environment/local
   - run_mode: debug
+  - driver: chrome
   - _self_
 
 app_mode: MISSING
