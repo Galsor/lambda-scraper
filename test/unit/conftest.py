@@ -1,7 +1,6 @@
 from os import PathLike
 from omegaconf import DictConfig
 from hydra import compose, initialize
-from lambda_scraper.utils.types import ExecutorMode
 import pytest
 import logging
 from pathlib import Path
