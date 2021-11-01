@@ -13,9 +13,9 @@ class Factory(object):
         self._cache = {}
 
     def __call__(self, name, **kwds):
-        if 'exception' in kwds:
-            exception = kwds['exception']
-            del kwds['exception']
+        if "exception" in kwds:
+            exception = kwds["exception"]
+            del kwds["exception"]
         else:
             exception = False
         name = str(name)
