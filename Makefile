@@ -7,6 +7,7 @@ VENV_NAME = .venv
 PYTHON_INTERPRETER = $(PROJECT_DIR)/$(VENV_NAME)/bin/python3
 SRC_DIR = lambda_scraper
 ENTRYPOINT_FILE = $(SRC_DIR)/app.py
+APP_MODULE = $(SRC_DIR).app
 
 ## Create virtual environment
 make_env:
@@ -19,11 +20,11 @@ requirements: make_env
 
 ## Run the scraper executor locally
 scraper_local_run: requirements
-	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE) "app_mode=scraper"
+	$(PYTHON_INTERPRETER) -m $(APP_MODULE) "app_mode=scraper"
 
 ## Run the url parser executor locally
 url_parser_local_run: requirements
-	$(PYTHON_INTERPRETER) $(ENTRYPOINT_FILE) "app_mode=producer"
+	$(PYTHON_INTERPRETER) $(APP_MODULE) "app_mode=producer"
 
 ## Run unit tests
 unit_test:
