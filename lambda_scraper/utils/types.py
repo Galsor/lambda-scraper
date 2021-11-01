@@ -1,21 +1,18 @@
-from abc import ABC
-from enum import Enum, auto
+from enum import Enum
+from abc import ABC, abstractmethod
 
-from lambda_scraper.recipe import PLUGINS
-
-
-class Executor(ABC):
-    pass
+from omegaconf import DictConfig
 
 
-class Producer(Executor):
-    pass
+class BaseTask(ABC): pass
+
+class BaseExecutor(ABC):
+    """ Abstract class for runnable application such as Producer and Scraper """
+    
+    cfg:DictConfig
+
+    @abstractmethod
+    def run(self, cfg: DictConfig, context):
+        ...
 
 
-class Scraper(Executor):
-    pass
-
-
-ExecutorMode = {"PRODUCER": Producer(), "SCRAPER": Scraper()}
-
-TaskType = Enum("Task", zip(PLUGINS, PLUGINS))  # Auto enum with plugins names
